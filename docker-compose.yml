@@ -2,16 +2,12 @@ version: '3.9'
 
 services:
   mysql:
-    image: mysql:8
+    image: mysql:latest
     ports:
       - 3306:3306
     volumes:
       - ~/apps/mysql:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=S3cret
-      - MYSQL_PASSWORD=An0thrS3crt
-      - MYSQL_USER=empresa
-      - MYSQL_DATABASE=empresa_db
+    env_file: docker.env
   empresa-h2:
     build:
       context: .
@@ -19,7 +15,7 @@ services:
     image: empresa-h2:v1
     restart: always
     ports:
-      - 8080:8080:8080
+      - 8080:8080
     expose:
       - 8080
   empresa-mysql:
@@ -29,6 +25,6 @@ services:
     image: empresa-mysql:v1
     restart: always
     ports:
-      - 8081:8081:8081
+      - 8081:8081
     expose:
       - 8081
