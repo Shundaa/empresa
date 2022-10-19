@@ -10,5 +10,25 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=S3cret
       - MYSQL_PASSWORD=An0thrS3crt
-      - MYSQL_USER=citizix_user
-      - MYSQL_DATABASE=citizix_db
+      - MYSQL_USER=empresa
+      - MYSQL_DATABASE=empresa_db
+  empresa-h2:
+    build:
+      context: .
+      dockerfile: Dockerfile-h2
+    image: empresa-h2:v1
+    restart: always
+    ports:
+      - 8080:8080:8080
+    expose:
+      - 8080
+  empresa-mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile-mysql
+    image: empresa-mysql:v1
+    restart: always
+    ports:
+      - 8081:8081:8081
+    expose:
+      - 8081
