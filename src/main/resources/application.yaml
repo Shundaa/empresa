@@ -14,11 +14,11 @@ spring:
         format_sql: true
   datasource:
     # URL connection to database (spring-security is database name)
-    url: jdbc:mysql://193.123.119.217:3306/empresa_db
+    url: jdbc:mysql://
     # H2 sql Driver
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: S3cret
+    username:
+    password:
   h2:
     console:
       enabled: true
